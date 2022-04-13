@@ -64,12 +64,12 @@ export default {
         <input type="text" v-model="editProductParams.supplier_id" />
       </div>
 
-      <label for="suppliers">Supplier:</label>
+      <!-- <label for="suppliers">Supplier:</label>
 
       <select name="suppliers" id="suppliers" v-model="editProductParams.supplier_id">
         <option v-for="supplier in suppliers" v-bind:key="supplier.id">{{ supplier.name }}</option>
 
-      </select>
+      </select> -->
 
       <input type="submit" value="Submit" />
     </form>

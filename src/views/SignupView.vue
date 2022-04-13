@@ -4,7 +4,12 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      newUserParams: {},
+      newUserParams: {
+        name: "",
+        email: "",
+        password: "",
+        password_confirmation: "",
+      },
       errors: [],
     };
   },
@@ -30,7 +35,9 @@ export default {
       </ul>
       <div>
         <label>Name:</label>
-        <input type="text" v-model="newUserParams.name" />
+        <input type="text" v-model="newUserParams.name" /> <br />
+        <small v-if="newUserParams.name.length <= 20">{{ 20 - newUserParams.name.length }} characters remaining</small>
+        <small v-else class="text-warning">username too long</small>
       </div>
       <div>
         <label>Email:</label>
