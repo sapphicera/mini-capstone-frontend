@@ -5,17 +5,23 @@ export default {
   data: function () {
     return {
       editProductParams: {},
+      suppliers: [],
       errors: [],
     };
   },
   created: function () {
     axios.get(`http://localhost:3000/products/${this.$route.params.id}.json`).then((response) => {
-      console.log(response.data);
       this.editProductParams = response.data;
+      // this.suppliers = response.data.all_suppliers;
+    })
+    axios.get("http://localhost:3000/suppliers.json").then((response) => {
+      this.suppliers = response.data;
     })
   },
   methods: {
     editProduct: function () {
+      console.log(this.editProductParams);
+      console.log("pending...")
       axios.patch(`http://localhost:3000/products/${this.$route.params.id}.json`, this.editProductParams).then((response) => {
         console.log(response.data);
         this.$router.push(`/products/${this.$route.params.id}`);
@@ -29,11 +35,13 @@ export default {
 
 <template>
   <div class="products-edit">
+    <h1>Edit Product</h1>
+
+    <ul>
+      <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+    </ul>
+
     <form v-on:submit.prevent="editProduct()">
-      <h1>Edit Product</h1>
-      <ul>
-        <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-      </ul>
       <div>
         <label>Name:</label>
         <input type="text" v-model="editProductParams.name" />
@@ -50,10 +58,19 @@ export default {
         <label>Stock:</label>
         <input type="text" v-model="editProductParams.stock" />
       </div>
+
       <div>
         <label>Supplier ID:</label>
         <input type="text" v-model="editProductParams.supplier_id" />
       </div>
+
+      <label for="suppliers">Supplier:</label>
+
+      <select name="suppliers" id="suppliers" v-model="editProductParams.supplier_id">
+        <option v-for="supplier in suppliers" v-bind:key="supplier.id">{{ supplier.name }}</option>
+
+      </select>
+
       <input type="submit" value="Submit" />
     </form>
   </div>
