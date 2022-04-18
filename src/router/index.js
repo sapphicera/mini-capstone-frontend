@@ -4,6 +4,7 @@ import ProductsIndex from '../views/ProductsIndex.vue'
 import ProductsShow from '../views/ProductsShow.vue'
 import ProductsEdit from '../views/ProductsEdit.vue'
 import ProductsNew from '../views/ProductsNew.vue'
+import ProductsMultidelete from '../views/ProductsMultidelete.vue'
 import SignupView from '../views/SignupView.vue'
 import LoginView from '../views/LoginView.vue'
 import LogoutView from '../views/LogoutView.vue'
@@ -33,6 +34,11 @@ const routes = [
     path: '/products/:id/edit',
     name: 'products-edit',
     component: ProductsEdit
+  },
+  {
+    path: '/products/multidelete',
+    name: 'products-multidelete',
+    component: ProductsMultidelete
   },
   {
     path: '/signup',
