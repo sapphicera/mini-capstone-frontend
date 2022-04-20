@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     indexProducts: function () {
-      axios.get("http://localhost:3000/products.json").then((response) => {
+      axios.get("/products.json").then((response) => {
         console.log(response.data);
         this.products = response.data;
       })
