@@ -12,7 +12,7 @@ export default {
   created: function () { },
   methods: {
     createProduct: function () {
-      axios.post("http://localhost:3000/products.json", this.newProductParams).then((response) => {
+      axios.post("/products.json", this.newProductParams).then((response) => {
         console.log(response.data);
         // this is where the create img stuff would go i think... need to get imgs working
         this.$router.push("/products");

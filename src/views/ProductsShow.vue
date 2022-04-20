@@ -12,14 +12,14 @@ export default {
   },
   methods: {
     showProduct: function () {
-      axios.get(`http://localhost:3000/products/${this.$route.params.id}.json`).then((response) => {
+      axios.get(`/products/${this.$route.params.id}.json`).then((response) => {
         console.log(response.data);
         this.product = response.data;
       })
     },
     deleteProduct: function () {
       console.log("deleting...");
-      axios.delete(`http://localhost:3000/products/${this.$route.params.id}.json`).then((response) => {
+      axios.delete(`/products/${this.$route.params.id}.json`).then((response) => {
         console.log(response.data);
         this.$router.push("/products");
       })

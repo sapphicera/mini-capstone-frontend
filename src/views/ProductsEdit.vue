@@ -10,11 +10,11 @@ export default {
     };
   },
   created: function () {
-    axios.get(`http://localhost:3000/products/${this.$route.params.id}.json`).then((response) => {
+    axios.get(`/products/${this.$route.params.id}.json`).then((response) => {
       this.editProductParams = response.data;
       // this.suppliers = response.data.all_suppliers;
     })
-    axios.get("http://localhost:3000/suppliers.json").then((response) => {
+    axios.get("/suppliers.json").then((response) => {
       this.suppliers = response.data;
     })
   },
@@ -22,7 +22,7 @@ export default {
     editProduct: function () {
       console.log(this.editProductParams);
       console.log("pending...")
-      axios.patch(`http://localhost:3000/products/${this.$route.params.id}.json`, this.editProductParams).then((response) => {
+      axios.patch(`/products/${this.$route.params.id}.json`, this.editProductParams).then((response) => {
         console.log(response.data);
         this.$router.push(`/products/${this.$route.params.id}`);
       }).catch((error) => {
