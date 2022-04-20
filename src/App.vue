@@ -10,6 +10,23 @@
   <router-view />
 </template>
 
+<script>
+export default {
+  data: function () {
+    return {
+      isLoggedIn: false,
+      getUserId: 0,
+    }
+  },
+  watch: {
+    $route: function () {
+      this.isLoggedIn = !!localStorage.jwt;
+      this.getUserId = localStorage.user_id;
+    }
+  }
+}
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
