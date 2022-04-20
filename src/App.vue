@@ -1,13 +1,24 @@
 <template>
   <nav>
-    <router-link to="/products/multidelete">multidelete</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/products">Products</router-link> |
-    <router-link to="/signup">Sign Up</router-link> |
-    <router-link to="/login">Log In</router-link> |
-    <router-link to="/logout">Log Out</router-link>
+    <router-link to="/products/multidelete">multidelete</router-link>
+    |
+    <router-link to="/about">About</router-link>
+    |
+    <router-link to="/products">Products</router-link>
+    |
+    <div v-if="!isLoggedIn">
+      <router-link to="/login">Log In</router-link>
+      |
+      <router-link to="/signup">Sign Up</router-link>
+    </div>
+    <div v-if="isLoggedIn">
+      | <router-link to="/logout">Log Out</router-link>
+    </div>
+
   </nav>
   <router-view />
+
+
 </template>
 
 <script>

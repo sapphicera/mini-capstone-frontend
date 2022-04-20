@@ -39,8 +39,11 @@ export default {
     <img v-bind:src="image.url" />
   </div>
   <br />
-  <router-link v-bind:to="`/products/${product.id}/edit`" class="btn btn-primary">Update</router-link> |
-  <button @click="deleteProduct()">Delete Product</button> |
+  <br />
+  <div v-if="this.$root.isLoggedIn">
+    <router-link v-bind:to="`/products/${product.id}/edit`" class="btn btn-primary">Update</router-link> | <button
+      @click="deleteProduct()">Delete Product</button> |
+  </div>
   <router-link v-bind:to="`/products`" class="btn btn-primary">Back to Index</router-link>
 </template>
 
